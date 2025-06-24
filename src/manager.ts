@@ -43,7 +43,13 @@ export class Manager implements MCManager {
   }
 
   getContext() {
-    return this.#execContext;
+    try {
+      return this.#execContext;
+    } catch(error) {
+      console.log("error while getting ctx")
+      console.log(error);
+      return { ctx: null }
+    }
   }
 
   addEventListener(type: string, callback: MCEventListener) {
