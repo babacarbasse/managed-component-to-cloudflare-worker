@@ -42,6 +42,10 @@ export class Manager implements MCManager {
     this.name = 'Cloudflare Worker Custom MC Manager'
   }
 
+  getContext() {
+    return this.#execContext;
+  }
+
   addEventListener(type: string, callback: MCEventListener) {
     this.#listeners[type] ||= []
     this.#listeners[type].push(callback)
